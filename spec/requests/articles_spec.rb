@@ -4,6 +4,7 @@ RSpec.describe ArticlesController do
   describe '#index' do
     it 'returns a success response' do
       get '/articles'
+
       # expect(response.status).to eq(200)
       expect(response).to have_http_status(:ok)
     end
@@ -16,11 +17,11 @@ RSpec.describe ArticlesController do
 
       aggregate_failures do
         expect(expected[:id]).to eq(article.id.to_s)
-        expect(expected[:type]).to eq("article")
+        expect(expected[:type]).to eq('article')
         expect(expected[:attributes]).to eq(
           title: article.title,
           content: article.content,
-          slug: article.slug
+          slug: article.slug,
         )
       end
     end
@@ -29,7 +30,8 @@ RSpec.describe ArticlesController do
       older_article = create(:article, created_at: 1.hour.ago)
       recent_article = create(:article)
       get '/articles'
-      ids = json_data.map {|item| item[:id].to_i}
+      ids = json_data.map { |item| item[:id].to_i }
+
       expect(ids).to eq([recent_article.id, older_article.id])
     end
   end
