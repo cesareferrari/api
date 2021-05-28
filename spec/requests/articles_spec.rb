@@ -64,5 +64,15 @@ RSpec.describe ArticlesController do
     it 'returns a success response' do
       expect(response).to have_http_status(:ok)
     end
+
+    it 'returns a proper JSON' do
+      expect(json_data[:id]).to eq(article.id.to_s)
+      expect(json_data[:type]).to eq('article')
+      expect(json_data[:attributes]).to eq(
+        title: article.title,
+        content: article.content,
+        slug: article.slug,
+      )
+    end
   end
 end
