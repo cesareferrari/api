@@ -6,6 +6,10 @@ class ArticlesController < ApplicationController
     render_collection(paginated)
   end
 
+  def show
+    render json: {}, status: :ok
+  end
+
   def serializer
     ArticleSerializer
   end

@@ -55,4 +55,14 @@ RSpec.describe ArticlesController do
       )
     end
   end
+
+  describe '#show' do
+    let(:article) { create :article }
+    subject { get "/articles/#{article.id}" }
+    before { subject }
+
+    it 'returns a success response' do
+      expect(response).to have_http_status(:ok)
+    end
+  end
 end
