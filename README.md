@@ -1,5 +1,11 @@
 # README
 
+GITHUB_CLIENT_ID
+GITHUB_CLIENT_SECRET
+
+
+
+
 ---
 
 title: Testing and implementing pagination in a Rails API
